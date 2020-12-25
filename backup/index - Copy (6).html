@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Enter your leave details</title>
+    <!-- Add some CSS to change client UI -->
+    <style>
+    body {
+        background-color: #232F3E;
+        }
+    label, button {
+        color: #FF9900;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        margin-left: 40px;
+        }
+     input {
+        color: #232F3E;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        margin-left: 20px;
+        }
+    </style>
+    <script>
+        // define the callAPI function that takes a first name and last name as parameters
+        var callAPI = (firstName,lastName,emailID)=>{
+            // instantiate a headers object
+            var myHeaders = new Headers();
+            // add content type header to object
+            myHeaders.append("Content-Type", "application/json");
+            // using built in JSON utility package turn object to string and store in a variable
+            var raw = JSON.stringify({"firstName":firstName,"lastName":lastName,"emailID":emailID});
+            // create a JSON object with parameters for API call and store in a variable
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+            // make API call with parameters and use promises to get response
+            fetch("https://bs55r5qiaf.execute-api.us-east-2.amazonaws.com/dev", requestOptions)
+            .then(response => response.text())
+            .then(result => alert(JSON.parse(result).body))
+            .catch(error => console.log('error', error));
+        }
+
+        var callAPIGetRemainingLeaves = (emailID)=>{
+            // instantiate a headers object
+            var myHeaders = new Headers();
+            // add content type header to object
+            myHeaders.append("Content-Type", "application/json");
+            // using built in JSON utility package turn object to string and store in a variable
+            var raw = JSON.stringify({"emailID":emailID});
+            // create a JSON object with parameters for API call and store in a variable
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+            // make API call with parameters and use promises to get response
+            fetch("https://mpt01rftrg.execute-api.us-east-2.amazonaws.com/dev", requestOptions)
+            .then(response => response.text())
+            .then(result => alert(JSON.parse(result).body))
+            .catch(error => console.log('error', error));
+        }
+
+
+    </script>
+</head>
+<body>
+    <form>
+      <label for="name">Email ID :</label>
+      <input type="text" id="email-id" name="email-id"><br><br>
+      <label for="name">First Name:</label>
+      <input type="text" id="first-name" name="first-name"><br><br>
+      <label for="name">Last Name:</label>
+      <input type="text" id="last-name" name="last-name"><br><br>
+      <label for="date-leave-start">Date of Leave Start :</label>
+      <input type="date" id="date-leave-start" name="date-leave-start"><br><br>
+      <label for="date-leave-end">Date of Leave End :</label>
+      <input type="date" id="date-leave-end" name="date-leave-end"><br><br>
+
+        <!-- set button onClick method to call function we defined passing input values as parameters -->
+        <button type="button" onclick="callAPI(document.getElementById('first-name').value,document.getElementById('last-name').value,document.getElementById('email-id').value)">Submit the data</button>
+        <button type="button" onclick="callAPIGetRemainingLeaves(document.getElementById('email-id').value)">Get Remaining Leaves</button>
+    </form>
+</body>
+</html>

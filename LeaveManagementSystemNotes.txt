@@ -1,0 +1,56 @@
+URLs
+Amplify
+https://us-east-2.console.aws.amazon.com/amplify/home?region=us-east-2#/
+
+https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStarted.Python.html
+
+
+key value / NoSQL (secondary indexes)
+key should be time+emailid
+
+enter the data
+show the total number of items -> query the table's secondary attributes and get the result
+get all back based on email ID
+
+
+TO DO:
+how to use getapi getremainingleaves/h10
+draw the response
+
+https://www.digitalocean.com/community/tutorials/how-to-use-the-javascript-fetch-api-to-get-data
+good js tutorial
+https://www.javascripttutorial.net/javascript-fetch-api/#:~:text=The%20Fetch%20API%20allows%20you,resolve%20into%20the%20actual%20data.
+
+
+***AWS Coginto**
+DemoUserPool / 5mneucu7mgbnr31m073o4aep41 / htule009ns68ad3h863a53e2idf2klmbfjqcj9a5jcekno6janv
+
+youtube.com / aqpollo cabrera
+bleepingbots.com
+
+
+-----------------------------------------
+
+login.html
+--> amplify
+--> api gateway (wrapper before Lambda)
+--> coginto-identity
+--> login successful .. use the token
+--> Can just show that the user is authenticated. Use the toke to communicate further.
+--> call the functions to show the details. UserName/EmailID tagged to the same as the one entered.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------
